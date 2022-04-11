@@ -1,0 +1,76 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" IDE shortcut override
+sethandler <c-w> a:vim
+
+""" Plugins  --------------------------------
+set commentary
+set argtextobj
+set textobj-entire
+set ReplaceWithRegister
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set nu
+
+""" Surround plugin ------------------------
+" Basic commands:
+"   cs      Change surroundings
+"   cst     Change surroundings tags
+"   dst     Delete surroundings tags
+"   ds      Delete surroundings tags
+"   ys      Surround text object 
+Plug 'tpope/vim-surround'
+
+""" MultiCursors plugin ---------------------
+" basic commands
+"   mc start MultiCursors
+"   mc next mactch
+"   mx skip next mactch
+"   mp remove curent match and go back to previous one
+Plug 'terryma/vim-multiple-cursors'
+map mc <A-n>
+map mx <A-x>
+map mp <A-p>
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Easy motion
+Plug 'easymotion/vim-easymotion'
+map <leader>f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+
+""" NERDTree
+" unmap Ctrl+T from IDE, remove ctrl-t from GIT handler: File Settings > Keymap > Git
+sethandler <c-t> a:vim
+" When in project files pane:
+""" use Q to close
+""" p to go to parent, P to root
+""" o to open file, g o to open file
+Plug 'preservim/nerdtree'
+map <c-t>   :NERDTree<CR>
+
+""" Mappings --------------------------------
+" Reformat the current line only
+map <leader>l V<Action>(ReformatCode)
+map <leader>r <Action>(RenameElement)
+map <leader>c <Action>(Stop)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+" Shift space
+map <S-Space> <Action>(GotoNextError)
+
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
