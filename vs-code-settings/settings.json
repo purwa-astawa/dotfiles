@@ -1,0 +1,17 @@
+{
+    "workbench.colorTheme": "Atom One Dark",
+    "sync.gist": "0bc6b10883da5695ce35e4382b03856a",
+    "window.zoomLevel": 2,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": true,
+    "git.confirmSync": false,
+    "go.toolsManagement.autoUpdate": true,
+    "php.validate.executablePath": "/usr/bin/php",
+    "explorer.confirmDelete": false,
+    "git.enableSmartCommit": true,
+    "vscode-neovim.highlightGroups.unknownHighlight": "vim",
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+    "intelephense.diagnostics.undefinedTypes": false,
+    "editor.minimap.enabled": false
+}

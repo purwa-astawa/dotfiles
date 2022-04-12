@@ -1,0 +1,49 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "command": "vscode-neovim.compositeEscape1",
+        "key": "j",
+        "when": "neovim.mode == insert && editorTextFocus",
+        "args": "j"
+    },
+    {
+        "key": "Ctrl+T",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "workbench.action.toggleSidebarVisibility",
+                "workbench.files.action.focusFilesExplorer"
+            ]
+        },
+        "when": "editorTextFocus && !sideBarVisible"
+    },
+    {
+        "key": "Ctrl+T",
+        "command": "workbench.action.closeSidebar",
+        "when": "editorTextFocus && sideBarVisible"
+    },
+    {
+        "key": "Ctrl+T",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "workbench.action.toggleSidebarVisibility",
+                "workbench.action.focusFirstEditorGroup"
+            ]
+        },
+        "when": "!editorTextFocus"
+    },
+    { 
+        "key": "Ctrl+B",
+        "command": "editor.action.revealDefinition",
+        "when": "editorTextFocus"
+    },
+    {
+       "key": "Ctrl+W",
+       "command": "workbench.action.focusPreviousGroup"
+    },
+    {
+        "key": "Ctrl+F4",
+        "command": "workbench.action.closeActiveEditor"
+    },
+]
