@@ -9,7 +9,8 @@ set commentary
 set argtextobj
 set textobj-entire
 set ReplaceWithRegister
-
+set which-key
+set timeoutlen=3000
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
 
