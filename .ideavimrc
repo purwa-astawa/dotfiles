@@ -43,7 +43,8 @@ map mp <A-p>
 set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
-
+set which-key
+set timeoutlen=3000
 """ Easy motion
 Plug 'easymotion/vim-easymotion'
 map <leader>f <Plug>(easymotion-s)
@@ -60,20 +61,82 @@ Plug 'preservim/nerdtree'
 map <c-t>   :NERDTree<CR>
 
 """ Mappings --------------------------------
+" escape to normal mode
+imap jj <Esc>
+" tabs
+vmap <Tab> >gv
+vmap <S-Tab> <gv
 " Reformat the current line only
 map <leader>l V<Action>(ReformatCode)
-map <leader>r <Action>(RenameElement)
-map <leader>c <Action>(Stop)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 
-map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 " Shift space
-map <S-Space> <Action>(GotoNextError)
+" map <S-Space> <Action>(GotoNextError)
 
-map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>o <Action>(FileStructurePopup)
+" Errors
+nmap <leader>x :action GotoNextError<cr>
+nmap <leader>X :action GotoPreviousError<cr>
+
+" Refactorings
+vmap T :action Refactorings.QuickListPopupAction<cr>
+vmap <leader>rm :action ExtractMethod<cr>
+nmap <leader>rr :action RenameElement<cr>
+nmap <leader>rg :action Generate<cr>
+nmap <leader>rI :action OptimizeImports<cr>
+
+" VCS operations
+nmap <leader>yy :action Vcs.Show.Local.Changes<cr>
+nmap <leader>yp :action Vcs.QuickListPopupAction<cr>
+nmap <leader>ya :action Annotate<cr>
+nmap <leader>yl :action Vcs.Show.Log<cr>
+nmap <leader>yd :action Compare.LastVersion<cr>
+nmap <leader>yP :action Git.Pull<cr>
+nmap <leader>yr :action Git.ResolveConflicts<cr>
+nmap <leader>yo :action Github.Open.In.Browser<cr>
+
+" Useful Git actions
+nmap <leader>gb :action Git.Branches<cr>
+nmap <leader>gp :action Git.Pull<cr>
+nmap <leader>gu :action Git.Push<cr>
+nmap <leader>gm :action Git.Merge<cr>
+
+" Splits manipulation
+nmap <leader>ws :action SplitHorizontally<cr>
+nmap <leader>wv :action SplitVertically<cr>
+nmap <leader>wc :action Unsplit<cr>
+nmap <leader>wC :action UnsplitAll<cr>
+nmap <leader>wd :action OpenEditorInOppositeTabGroup<cr>
+nmap <leader>s  :action SelectInProjectView<cr>
+
+" Navigation
+noremap i k
+noremap j h
+noremap k j
+"switch to insert mode
+noremap o i
+"insert newline
+noremap n o 
+nmap <leader>h :action Back<cr>
+nmap <leader>l :action Forward<cr>
+nmap <leader>L :action RecentLocations<cr>
+nmap <leader>u :action FindUsages<cr>
+nmap <leader>C :action CallHierarchy<cr>
+nmap <leader>c :action GotoClass<cr>
+nmap <leader>s :action GotoSymbol<cr>
+nmap <leader>m :action ToggleBookmark<cr>
+nmap <leader>; :action FileStructurePopup<cr>
+nmap <leader>M :action ActivateStructureToolWindow<cr>
+nmap <leader>d :action ShowErrorDescription<cr>
+nmap <leader>i :action GotoImplementation<cr>
+nmap <leader>U :action GotoSuperMethod<cr>
+nmap <leader>I :action SelectIn<cr>
+nmap <leader>p :action JumpToLastWindow<cr>
+nmap <leader>b :action ShowBookmarks<cr>
+nmap <leader>gf :action GotoFile<cr>
+nmap <leader>gr :action RecentFiles<cr>
+nmap <leader>ga :action RecentChangedFiles<cr>
 map <leader>mn <Action>(MainMenu)
 map <leader>[ <Action>(EditorLineStart)
 map <leader>] <Action>(EditorLineEnd)
