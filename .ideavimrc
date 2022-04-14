@@ -87,20 +87,19 @@ nmap <leader>rg :action Generate<cr>
 nmap <leader>rI :action OptimizeImports<cr>
 
 " VCS operations
-nmap <leader>yy :action Vcs.Show.Local.Changes<cr>
-nmap <leader>yp :action Vcs.QuickListPopupAction<cr>
 nmap <leader>ya :action Annotate<cr>
-nmap <leader>yl :action Vcs.Show.Log<cr>
-nmap <leader>yd :action Compare.LastVersion<cr>
-nmap <leader>yP :action Git.Pull<cr>
 nmap <leader>yr :action Git.ResolveConflicts<cr>
-nmap <leader>yo :action Github.Open.In.Browser<cr>
 
 " Useful Git actions
+nmap <leader>gp :action Vcs.QuickListPopupAction<cr>
 nmap <leader>gb :action Git.Branches<cr>
-nmap <leader>gp :action Git.Pull<cr>
+nmap <leader>gP :action Git.Pull<cr>
 nmap <leader>gu :action Git.Push<cr>
 nmap <leader>gm :action Git.Merge<cr>
+nmap <leader>go :action Github.Open.In.Browser<cr>
+nmap <leader>gc :action Vcs.Show.Local.Changes<cr>
+nmap <leader>gd :action Compare.LastVersion<cr>
+nmap <leader>gl :action Vcs.Show.Log<cr>
 
 " Splits manipulation
 nmap <leader>ws :action SplitHorizontally<cr>
@@ -108,6 +107,7 @@ nmap <leader>wv :action SplitVertically<cr>
 nmap <leader>wc :action Unsplit<cr>
 nmap <leader>wC :action UnsplitAll<cr>
 nmap <leader>wd :action OpenEditorInOppositeTabGroup<cr>
+nmap <leader>wm :action MoveEditorToOppositeTabGroup<cr>
 nmap <leader>s  :action SelectInProjectView<cr>
 
 " Navigation
@@ -137,6 +137,6 @@ nmap <leader>b :action ShowBookmarks<cr>
 nmap <leader>gf :action GotoFile<cr>
 nmap <leader>gr :action RecentFiles<cr>
 nmap <leader>ga :action RecentChangedFiles<cr>
-map <leader>mn <Action>(MainMenu)
+map <leader>mm <Action>(MainMenu)
 map <leader>[ <Action>(EditorLineStart)
 map <leader>] <Action>(EditorLineEnd)
