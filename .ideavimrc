@@ -102,12 +102,12 @@ nmap <leader>gd :action Compare.LastVersion<cr>
 nmap <leader>gl :action Vcs.Show.Log<cr>
 
 " Splits manipulation
-nmap <leader>ws :action SplitHorizontally<cr>
-nmap <leader>wv :action SplitVertically<cr>
-nmap <leader>wc :action Unsplit<cr>
-nmap <leader>wC :action UnsplitAll<cr>
-nmap <leader>wd :action OpenEditorInOppositeTabGroup<cr>
-nmap <leader>wm :action MoveEditorToOppositeTabGroup<cr>
+nmap <c-w>h :action SplitHorizontally<cr>
+nmap <c-w>v :action SplitVertically<cr>
+nmap <c-w>u :action Unsplit<cr>
+nmap <c-w>a :action UnsplitAll<cr>
+nmap <c-w>d :action OpenEditorInOppositeTabGroup<cr>
+nmap <c-w>m :action MoveEditorToOppositeTabGroup<cr>
 nmap <leader>s  :action SelectInProjectView<cr>
 
 " Navigation
