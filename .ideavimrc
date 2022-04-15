@@ -138,5 +138,5 @@ nmap <leader>gf :action GotoFile<cr>
 nmap <leader>gr :action RecentFiles<cr>
 nmap <leader>ga :action RecentChangedFiles<cr>
 map <leader>mm <Action>(MainMenu)
-map <leader>[ <Action>(EditorLineStart)
-map <leader>] <Action>(EditorLineEnd)
+map <leader>[ <Home>
+map <leader>] <S-a>
