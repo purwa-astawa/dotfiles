@@ -85,7 +85,7 @@ vmap <leader>rm :action ExtractMethod<cr>
 nmap <leader>rr :action RenameElement<cr>
 nmap <leader>rg :action Generate<cr>
 nmap <leader>rI :action OptimizeImports<cr>
-
+nmap <Leader>rn :action RemoteHostView.Rename<cr>
 " VCS operations
 nmap <leader>ya :action Annotate<cr>
 nmap <leader>yr :action Git.ResolveConflicts<cr>
