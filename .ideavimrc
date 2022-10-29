@@ -110,14 +110,6 @@ nmap <c-w>d :action OpenEditorInOppositeTabGroup<cr>
 nmap <c-w>m :action MoveEditorToOppositeTabGroup<cr>
 nmap <leader>s  :action SelectInProjectView<cr>
 
-" Navigation
-noremap i k
-noremap j h
-noremap k j
-"switch to insert mode
-noremap o i
-"insert newline
-noremap n o 
 nmap <leader>h :action Back<cr>
 nmap <leader>l :action Forward<cr>
 nmap <leader>L :action RecentLocations<cr>

@@ -5,12 +5,6 @@ imap jj <Esc>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
-" navigations
-noremap i k
-noremap j h
-noremap k j
-noremap o i
-noremap n o
 noremap <Leader>[ <Home>
 noremap <Leader>] <S-a>
 
