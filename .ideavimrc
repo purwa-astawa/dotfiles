@@ -27,6 +27,7 @@ set nu
 "   ds      Delete surroundings tags
 "   ys      Surround text object 
 Plug 'tpope/vim-surround'
+set surround
 
 """ MultiCursors plugin ---------------------
 " basic commands
