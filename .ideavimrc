@@ -1,6 +1,10 @@
 """ Map leader to space ---------------------
 let mapleader=" "
 
+""" Disable annoying bell sound
+set visualbell
+set noerrorbells
+
 """ IDE shortcut override
 sethandler <c-w> a:vim
 
@@ -19,6 +23,24 @@ set so=5
 set incsearch
 set nu
 
+""" unmap capital hjl
+map H <Nop>
+map J <Nop>
+map L <Nop>
+
+""" Harpoon
+nmap <C-h>a :action SetHarpoon1<cr>
+nmap <C-h>s :action SetHarpoon2<cr>
+nmap <C-h>d :action SetHarpoon3<cr>
+nmap <C-h>f :action SetHarpoon4<cr>
+
+nmap <C-h>h :action GotoHarpoon1<cr>
+nmap <C-h>j :action GotoHarpoon2<cr>
+nmap <C-h>k :action GotoHarpoon3<cr>
+nmap <C-h>l :action GotoHarpoon4<cr>
+
+nmap <C-h>e :action ShowHarpoon<cr>
+nmap <C-h>w :action AddToHarpoon<cr>
 """ Surround plugin ------------------------
 " Basic commands:
 "   cs      Change surroundings
@@ -28,6 +50,7 @@ set nu
 "   ys      Surround text object 
 Plug 'tpope/vim-surround'
 set surround
+
 
 """ MultiCursors plugin ---------------------
 " basic commands
@@ -62,8 +85,6 @@ Plug 'preservim/nerdtree'
 map <c-t>   :NERDTree<CR>
 
 """ Mappings --------------------------------
-" escape to normal mode
-imap jj <Esc>
 " tabs
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -111,6 +132,7 @@ nmap <c-w>d :action OpenEditorInOppositeTabGroup<cr>
 nmap <c-w>m :action MoveEditorToOppositeTabGroup<cr>
 nmap <leader>s  :action SelectInProjectView<cr>
 
+" Navigation
 nmap <leader>h :action Back<cr>
 nmap <leader>l :action Forward<cr>
 nmap <leader>L :action RecentLocations<cr>
@@ -133,3 +155,4 @@ nmap <leader>ga :action RecentChangedFiles<cr>
 map <leader>mm <Action>(MainMenu)
 map <leader>[ <Home>
 map <leader>] <S-a>
+set timeoutlen=5000
