@@ -6,6 +6,7 @@ return {
       function()
         require("hop").hint_char2()
       end,
+      desc = "jump to char2",
     },
     {
       "<leader>J",
@@ -14,6 +15,7 @@ return {
           multi_windows = true,
         })
       end,
+      desc = "jump to char2 in all windows",
     },
   },
   branch = "v2", -- optional but strongly recommended
