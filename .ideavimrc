@@ -13,6 +13,7 @@ set commentary
 set argtextobj
 set textobj-entire
 set ReplaceWithRegister
+set quickscope
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -23,24 +24,7 @@ set so=5
 set incsearch
 set nu
 
-""" unmap capital hjl
-map H <Nop>
-map J <Nop>
-map L <Nop>
 
-""" Harpoon
-nmap <C-h>a :action SetHarpoon1<cr>
-nmap <C-h>s :action SetHarpoon2<cr>
-nmap <C-h>d :action SetHarpoon3<cr>
-nmap <C-h>f :action SetHarpoon4<cr>
-
-nmap <C-h>h :action GotoHarpoon1<cr>
-nmap <C-h>j :action GotoHarpoon2<cr>
-nmap <C-h>k :action GotoHarpoon3<cr>
-nmap <C-h>l :action GotoHarpoon4<cr>
-
-nmap <C-h>e :action ShowHarpoon<cr>
-nmap <C-h>w :action AddToHarpoon<cr>
 """ Surround plugin ------------------------
 " Basic commands:
 "   cs      Change surroundings
@@ -71,8 +55,8 @@ set which-key
 set timeoutlen=3000
 """ Easy motion
 Plug 'easymotion/vim-easymotion'
-map <leader>f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymotion-f)
+map <leader>j <Plug>(easymotion-s)
+map <leader>J <Plug>(easymotion-jumptoanywhere)
 
 """ NERDTree
 " unmap Ctrl+T from IDE, remove ctrl-t from GIT handler: File Settings > Keymap > Git
@@ -82,24 +66,25 @@ sethandler <c-t> a:vim
 """ p to go to parent, P to root
 """ o to open file, g o to open file
 Plug 'preservim/nerdtree'
-map <c-t>   :NERDTree<CR>
+map <leader>e   :NERDTree<CR>
+
+" quckscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 """ Mappings --------------------------------
 " tabs
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 " Reformat the current line only
-map <leader>l V<Action>(ReformatCode)
+" map <leader>l V<Action>(ReformatCode)
 map <leader>z <Action>(ToggleDistractionFreeMode)
 
 map <leader>a <Action>(Annotate)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+" map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 " Shift space
 " map <S-Space> <Action>(GotoNextError)
 
-" Errors
-nmap <leader>x :action GotoNextError<cr>
-nmap <leader>X :action GotoPreviousError<cr>
+
 
 " Refactorings
 vmap T :action Refactorings.QuickListPopupAction<cr>
@@ -111,6 +96,10 @@ nmap <Leader>rr :action RemoteHostView.Rename<cr>
 " VCS operations
 nmap <leader>ya :action Annotate<cr>
 nmap <leader>yr :action Git.ResolveConflicts<cr>
+
+" search related
+nmap <leader>ff :action RecentChangedFiles<cr>
+nmap <leader>fF :action RecentFiles<cr>
 
 " Useful Git actions
 nmap <leader>gp :action Vcs.QuickListPopupAction<cr>
@@ -130,29 +119,47 @@ nmap <c-w>u :action Unsplit<cr>
 nmap <c-w>a :action UnsplitAll<cr>
 nmap <c-w>d :action OpenEditorInOppositeTabGroup<cr>
 nmap <c-w>m :action MoveEditorToOppositeTabGroup<cr>
-nmap <leader>s  :action SelectInProjectView<cr>
 
 " Navigation
-nmap <leader>h :action Back<cr>
-nmap <leader>l :action Forward<cr>
-nmap <leader>L :action RecentLocations<cr>
-nmap <leader>u :action FindUsages<cr>
-nmap <leader>C :action CallHierarchy<cr>
-nmap <leader>c :action GotoClass<cr>
-nmap <leader>s :action GotoSymbol<cr>
-nmap <leader>m :action ToggleBookmark<cr>
-nmap <leader>; :action FileStructurePopup<cr>
-nmap <leader>M :action ActivateStructureToolWindow<cr>
-nmap <leader>d :action ShowErrorDescription<cr>
-nmap <leader>i :action GotoImplementation<cr>
-nmap <leader>U :action GotoSuperMethod<cr>
-nmap <leader>I :action SelectIn<cr>
-nmap <leader>p :action JumpToLastWindow<cr>
-nmap <leader>b :action ShowBookmarks<cr>
-nmap <leader>gf :action GotoFile<cr>
-nmap <leader>gr :action RecentFiles<cr>
-nmap <leader>ga :action RecentChangedFiles<cr>
-map <leader>mm <Action>(MainMenu)
-map <leader>[ <Home>
-map <leader>] <S-a>
+" nmap <leader>h :action Back<cr>
+" nmap <leader>l :action Forward<cr>
+" nmap <leader>L :action RecentLocations<cr>
+" nmap <leader>u :action FindUsages<cr>
+" nmap <leader>C :action CallHierarchy<cr>
+" nmap <leader>c :action GotoClass<cr>
+" nmap <leader>s :action GotoSymbol<cr>
+" nmap <leader>m :action ToggleBookmark<cr>
+" nmap <leader>; :action FileStructurePopup<cr>
+" nmap <leader>M :action ActivateStructureToolWindow<cr>
+" nmap <leader>d :action ShowErrorDescription<cr>
+" nmap <leader>i :action GotoImplementation<cr>
+" nmap <leader>U :action GotoSuperMethod<cr>
+" nmap <leader>I :action SelectIn<cr>
+" nmap <leader>p :action JumpToLastWindow<cr>
+" nmap <leader>b :action ShowBookmarks<cr>
+" nmap <leader>gf :action GotoFile<cr>
+" nmap <leader>gr :action RecentFiles<cr>
+" nmap <leader>ga :action RecentChangedFiles<cr>
+nmap gd :action GoToDeclaration<cr>
+nmap gu :action FindUsage<cr>
+
+" Errors
+nmap ]e :action GotoNextError<cr>
+nmap [e :action GotoPreviousError<cr>
+
+""" Harpoon
+nmap <leader>ha :action SetHarpoon1<cr>
+nmap <leader>hs :action SetHarpoon2<cr>
+nmap <leader>hd :action SetHarpoon3<cr>
+nmap <leader>hf :action SetHarpoon4<cr>
+
+nmap <leader>hh :action GotoHarpoon1<cr>
+nmap <leader>hj :action GotoHarpoon2<cr>
+nmap <leader>hk :action GotoHarpoon3<cr>
+nmap <leader>hl :action GotoHarpoon4<cr>
+
+nmap <leader>he :action ShowHarpoon<cr>
+nmap <leader>hw :action AddToHarpoon<cr>
+
+map <leader>l <Action>(MainMenu)
 set timeoutlen=5000
