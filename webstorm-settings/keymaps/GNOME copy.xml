@@ -1,3 +1,0 @@
-<keymap version="1" name="GNOME copy" parent="Default for GNOME">
-  <action id="Vcs.UpdateProject" />
-</keymap>
