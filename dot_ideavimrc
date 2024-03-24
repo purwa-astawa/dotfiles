@@ -1,0 +1,165 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Disable annoying bell sound
+set visualbell
+set noerrorbells
+
+""" IDE shortcut override
+sethandler <c-w> a:vim
+
+""" Plugins  --------------------------------
+set commentary
+set argtextobj
+set textobj-entire
+set ReplaceWithRegister
+set quickscope
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set nu
+
+
+""" Surround plugin ------------------------
+" Basic commands:
+"   cs      Change surroundings
+"   cst     Change surroundings tags
+"   dst     Delete surroundings tags
+"   ds      Delete surroundings tags
+"   ys      Surround text object 
+Plug 'tpope/vim-surround'
+set surround
+
+
+""" MultiCursors plugin ---------------------
+" basic commands
+"   mc start MultiCursors
+"   mc next mactch
+"   mx skip next mactch
+"   mp remove curent match and go back to previous one
+Plug 'terryma/vim-multiple-cursors'
+map mc <A-n>
+map mx <A-x>
+map mp <A-p>
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+set which-key
+set timeoutlen=3000
+""" Easy motion
+Plug 'easymotion/vim-easymotion'
+map <leader>j <Plug>(easymotion-s)
+map <leader>J <Plug>(easymotion-jumptoanywhere)
+
+""" NERDTree
+" unmap Ctrl+T from IDE, remove ctrl-t from GIT handler: File Settings > Keymap > Git
+sethandler <c-t> a:vim
+" When in project files pane:
+""" use Q to close
+""" p to go to parent, P to root
+""" o to open file, g o to open file
+Plug 'preservim/nerdtree'
+map <leader>e   :NERDTree<CR>
+
+""" Mappings --------------------------------
+" tabs
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+" Reformat the current line only
+" map <leader>l V<Action>(ReformatCode)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader>a <Action>(Annotate)
+" map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+" Shift space
+" map <S-Space> <Action>(GotoNextError)
+
+
+
+" Refactorings
+vmap T :action Refactorings.QuickListPopupAction<cr>
+vmap <leader>rm :action ExtractMethod<cr>
+nmap <leader>rn :action RenameElement<cr>
+nmap <leader>rg :action Generate<cr>
+nmap <leader>rI :action OptimizeImports<cr>
+nmap <Leader>rr :action RemoteHostView.Rename<cr>
+" VCS operations
+nmap <leader>ya :action Annotate<cr>
+nmap <leader>yr :action Git.ResolveConflicts<cr>
+
+" search related
+nmap <leader>ff :action RecentChangedFiles<cr>
+nmap <leader>fF :action RecentFiles<cr>
+
+" Useful Git actions
+nmap <leader>gp :action Vcs.QuickListPopupAction<cr>
+nmap <leader>gb :action Git.Branches<cr>
+nmap <leader>gP :action Git.Pull<cr>
+nmap <leader>gu :action Git.Push<cr>
+nmap <leader>gm :action Git.Merge<cr>
+nmap <leader>go :action Github.Open.In.Browser<cr>
+nmap <leader>gc :action Vcs.Show.Local.Changes<cr>
+nmap <leader>gd :action Compare.LastVersion<cr>
+nmap <leader>gl :action Vcs.Show.Log<cr>
+
+" Splits manipulation
+nmap <c-w>h :action SplitHorizontally<cr>
+nmap <c-w>v :action SplitVertically<cr>
+nmap <c-w>u :action Unsplit<cr>
+nmap <c-w>a :action UnsplitAll<cr>
+nmap <c-w>d :action OpenEditorInOppositeTabGroup<cr>
+nmap <c-w>m :action MoveEditorToOppositeTabGroup<cr>
+
+" Navigation
+" nmap <leader>h :action Back<cr>
+" nmap <leader>l :action Forward<cr>
+" nmap <leader>L :action RecentLocations<cr>
+" nmap <leader>u :action FindUsages<cr>
+" nmap <leader>C :action CallHierarchy<cr>
+" nmap <leader>c :action GotoClass<cr>
+" nmap <leader>s :action GotoSymbol<cr>
+" nmap <leader>m :action ToggleBookmark<cr>
+" nmap <leader>; :action FileStructurePopup<cr>
+" nmap <leader>M :action ActivateStructureToolWindow<cr>
+" nmap <leader>d :action ShowErrorDescription<cr>
+" nmap <leader>i :action GotoImplementation<cr>
+" nmap <leader>U :action GotoSuperMethod<cr>
+" nmap <leader>I :action SelectIn<cr>
+" nmap <leader>p :action JumpToLastWindow<cr>
+" nmap <leader>b :action ShowBookmarks<cr>
+" nmap <leader>gf :action GotoFile<cr>
+" nmap <leader>gr :action RecentFiles<cr>
+" nmap <leader>ga :action RecentChangedFiles<cr>
+nmap gd :action GoToDeclaration<cr>
+nmap <leader>fu :action FindUsage<cr>
+nmap ghn :action JumpToNextChange<cr>
+nmap ghb :action JumpToLastChange<cr>
+
+" Errors
+nmap ]e :action GotoNextError<cr>
+nmap [e :action GotoPreviousError<cr>
+
+""" Harpoon
+nmap <leader>ha :action SetHarpoon1<cr>
+nmap <leader>hs :action SetHarpoon2<cr>
+nmap <leader>hd :action SetHarpoon3<cr>
+nmap <leader>hf :action SetHarpoon4<cr>
+
+nmap <leader>hh :action GotoHarpoon1<cr>
+nmap <leader>hj :action GotoHarpoon2<cr>
+nmap <leader>hk :action GotoHarpoon3<cr>
+nmap <leader>hl :action GotoHarpoon4<cr>
+
+nmap <leader>he :action ShowHarpoon<cr>
+nmap <leader>hw :action AddToHarpoon<cr>
+nmap <leader>cm :action CodeMenu<cr>
+
+map <leader>l <Action>(MainMenu)
+set timeoutlen=5000
